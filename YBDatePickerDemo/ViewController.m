@@ -27,7 +27,7 @@
 #pragma mark - configUI
 
 - (void)configUI {
-    CGFloat w = 150.f;
+    CGFloat w = 200.f;
     CGFloat h = 50.f;
     UIColor *color = [UIColor colorWithRed:0.42 green:0.58 blue:0.98 alpha:1];
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(FULL_SCREEN_WIDTH/2 - w/2, FULL_SCREEN_HEIGHT/2 - h/2, w, h)];
@@ -67,6 +67,7 @@
     
     datePicker.completeBlock = ^(NSString *selectDate) {
         NSLog(@"%@",selectDate);
+        [sender setTitle:selectDate forState:UIControlStateNormal];
     };
     [datePicker configurationWithPickerMode:UIDatePickerModeDateAndTime];
     [self.view addSubview:datePicker];
