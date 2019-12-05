@@ -21,6 +21,7 @@
 
 @implementation YBDatePickView
 
+#pragma mark - override
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -29,7 +30,7 @@
     return self;
 }
 
-#pragma mark -- 选择器
+#pragma mark - 选择器
 - (void)configuration {
     [self configurationWithPickerMode:UIDatePickerModeDate];
 }
@@ -203,6 +204,8 @@
     }
     _dateStr =[outputFormatter stringFromDate:self.datePicker.date];
 }
+
+#pragma mark - actions
 
 /**
  datePicker每次改变时

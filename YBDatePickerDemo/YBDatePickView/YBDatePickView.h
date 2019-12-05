@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^MyBlockType)(NSString *selectDate);
-#define YB_DATE_PICKER_STATIC_TODAY_END (-2000)
+/**不设置为0的原因是，整型默认为0，不设置此值的话也会默认为限制当天了*/
+#define YB_DATE_PICKER_STATIC_TODAY_END (-0xffff)
 
 
 @interface YBDatePickView : UIView
 
-/** 距离当前显示日期最大年份差，值为整型（>=1小于当前日期，<=-1大于当前日期）。值为YB_DATE_PICKER_STATIC_TODAY_END 时截止日期为今天 */
+/**
+ 距离当前显示日期最大年份差，值为整型（>=1小于当前日期，<=-1大于当前日期）。值为YB_DATE_PICKER_STATIC_TODAY_END 时截止日期为今天
+ */
 @property(assign, nonatomic) NSInteger maxYear; //优先级：*
 /**距离当前显示日期的时间差，值为具体时间如：2019-06-18 */
 @property (nonatomic, copy) NSString *maxDateString;    //优先级：**
@@ -29,7 +32,7 @@ typedef void (^MyBlockType)(NSString *selectDate);
 /**只控制最大时间时分，不控制日期*/
 @property (nonatomic, strong) NSDate *maxTimeDate;
 
-/** 默认显示今天日期 */
+/** 最开始停留的位置，默认显示今天日期 */
 @property (strong, nonatomic) NSDate *date;
 /** 日期回调 */
 @property(copy, nonatomic) MyBlockType completeBlock;
